@@ -16,17 +16,8 @@ It is designed for JSONL-based LLM datasets where duplicate prompts, empty field
 
 ### Install
 
-Install with your preferred method:
-
 ```bash
-# From the custom tap
-brew tap itamaker/tap https://github.com/itamaker/homebrew-tap
 brew install itamaker/tap/datasetlint
-```
-
-```bash
-# Or install from source
-go install github.com/itamaker/datasetlint@latest
 ```
 
 <details>
@@ -42,8 +33,6 @@ Current release archives:
 Each archive contains a single executable: `datasetlint`.
 
 </details>
-
-If the repository is still private, release-based installs require GitHub access to the repository assets.
 
 ### First Run
 
