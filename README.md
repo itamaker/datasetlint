@@ -6,6 +6,8 @@
 
 It is designed for JSONL-based LLM datasets where duplicate prompts, empty fields, and train/eval overlap can quietly corrupt results.
 
+![datasetlint social preview](docs/images/social-preview.png)
+
 ## Support
 
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/amaker)
