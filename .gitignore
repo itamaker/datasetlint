@@ -1,0 +1,5 @@
+dist/
+datasetlint
+*.out
+*.test
+.DS_Store
