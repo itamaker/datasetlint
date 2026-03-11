@@ -21,7 +21,7 @@ go run . scan -train examples/train.jsonl -eval examples/eval.jsonl
 From source:
 
 ```bash
-go install github.com/YOUR_GITHUB_USER/datasetlint@latest
+go install github.com/itamaker/datasetlint@latest
 ```
 
 From Homebrew after you publish a tap formula:
