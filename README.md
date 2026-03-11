@@ -1,50 +1,85 @@
 # datasetlint
 
-`datasetlint` catches common dataset issues before they leak into training or evaluation.
+`datasetlint` is a Go CLI that catches common dataset quality issues before they leak into training or evaluation.
 
-## Example
+It is designed for JSONL-based LLM datasets where duplicate prompts, empty fields, and train/eval overlap can quietly corrupt results.
+
+## Quickstart
+
+### Install
+
+Install with your preferred method:
+
+```bash
+# From the custom tap
+brew tap itamaker/tap https://github.com/itamaker/homebrew-tap
+brew install itamaker/tap/datasetlint
+```
+
+```bash
+# Or install from source
+go install github.com/itamaker/datasetlint@latest
+```
+
+<details>
+<summary>You can also download binaries from <a href="https://github.com/itamaker/datasetlint/releases">GitHub Releases</a>.</summary>
+
+Current release archives:
+
+- macOS (Apple Silicon/arm64): `datasetlint_0.1.0_darwin_arm64.tar.gz`
+- macOS (Intel/x86_64): `datasetlint_0.1.0_darwin_amd64.tar.gz`
+- Linux (arm64): `datasetlint_0.1.0_linux_arm64.tar.gz`
+- Linux (x86_64): `datasetlint_0.1.0_linux_amd64.tar.gz`
+
+Each archive contains a single executable: `datasetlint`.
+
+</details>
+
+If the repository is still private, release-based installs require GitHub access to the repository assets.
+
+### First Run
+
+Run:
+
+```bash
+datasetlint scan -train examples/train.jsonl -eval examples/eval.jsonl
+```
+
+## Requirements
+
+- Go `1.22+`
+
+## Run
 
 ```bash
 go run . scan -train examples/train.jsonl -eval examples/eval.jsonl
 ```
 
-## Checks
-
-- missing IDs
-- empty inputs and outputs
-- duplicate normalized inputs within a split
-- cross-split overlap between train and eval
-- label-count summary
-
-## Install
-
-From source:
+Strict mode exits with a non-zero status when issues are found:
 
 ```bash
-go install github.com/itamaker/datasetlint@latest
+go run . scan -train examples/train.jsonl -eval examples/eval.jsonl -strict
 ```
 
-From Homebrew after you publish a tap formula:
+## Build From Source
 
 ```bash
-brew tap itamaker/tap https://github.com/itamaker/homebrew-tap
-brew install itamaker/tap/datasetlint
+make build
 ```
-
-## Repo-Ready Files
-
-- `.github/workflows/ci.yml`
-- `.github/workflows/release.yml`
-- `.goreleaser.yaml`
-- `PUBLISHING.md`
-- `scripts/render-homebrew-formula.sh`
-
-## Release
 
 ```bash
-git tag v0.1.0
-git push origin v0.1.0
+go build -o dist/datasetlint .
 ```
 
-The tagged release workflow publishes multi-platform binaries and `checksums.txt`, which you can feed into the Homebrew formula renderer.
-The generated formula should be committed to `https://github.com/itamaker/homebrew-tap`.
+## What It Does
+
+1. Parses train and eval JSONL files.
+2. Detects missing IDs and empty input or output fields.
+3. Flags duplicate normalized inputs within a split.
+4. Detects overlap between train and eval inputs.
+5. Summarizes label counts for quick dataset inspection.
+
+## Notes
+
+- `-json` is useful for CI checks or automated dataset pipelines.
+- Maintainer release steps live in `PUBLISHING.md`.
