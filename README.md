@@ -2,9 +2,9 @@
 
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 
-`datasetlint` is a Go CLI that catches common dataset quality issues before they leak into training or evaluation.
+`datasetlint` is a Go CLI for auditing JSONL datasets before training or evaluation.
 
-It is designed for JSONL-based LLM datasets where duplicate prompts, empty fields, and train/eval overlap can quietly corrupt results.
+It catches duplicates, semantic leakage, label conflicts, and other quality issues that can quietly corrupt benchmark or training results.
 
 ![datasetlint social preview](docs/images/social-preview.png)
 
@@ -25,10 +25,10 @@ brew install itamaker/tap/datasetlint
 
 Current release archives:
 
-- macOS (Apple Silicon/arm64): `datasetlint_0.1.1_darwin_arm64.tar.gz`
-- macOS (Intel/x86_64): `datasetlint_0.1.1_darwin_amd64.tar.gz`
-- Linux (arm64): `datasetlint_0.1.1_linux_arm64.tar.gz`
-- Linux (x86_64): `datasetlint_0.1.1_linux_amd64.tar.gz`
+- macOS (Apple Silicon/arm64): `datasetlint_0.2.0_darwin_arm64.tar.gz`
+- macOS (Intel/x86_64): `datasetlint_0.2.0_darwin_amd64.tar.gz`
+- Linux (arm64): `datasetlint_0.2.0_linux_arm64.tar.gz`
+- Linux (x86_64): `datasetlint_0.2.0_linux_amd64.tar.gz`
 
 Each archive contains a single executable: `datasetlint`.
 
