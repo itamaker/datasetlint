@@ -39,6 +39,14 @@ Each archive contains a single executable: `datasetlint`.
 Run:
 
 ```bash
+datasetlint
+```
+
+This launches the interactive Bubble Tea terminal UI.
+
+You can still use the direct command form:
+
+```bash
 datasetlint scan -train examples/train.jsonl -eval examples/eval.jsonl
 ```
 
@@ -50,6 +58,12 @@ datasetlint scan -train examples/train.jsonl -eval examples/eval.jsonl
 
 ```bash
 go run . scan -train examples/train.jsonl -eval examples/eval.jsonl
+```
+
+Tune semantic duplicate detection:
+
+```bash
+go run . scan -train examples/train.jsonl -eval examples/eval.jsonl -semantic-threshold 0.6
 ```
 
 Strict mode exits with a non-zero status when issues are found:
@@ -73,8 +87,8 @@ go build -o dist/datasetlint .
 1. Parses train and eval JSONL files.
 2. Detects missing IDs and empty input or output fields.
 3. Flags duplicate normalized inputs within a split.
-4. Detects overlap between train and eval inputs.
-5. Summarizes label counts for quick dataset inspection.
+4. Detects semantic near-duplicates, label conflicts, and train/eval leakage risks.
+5. Summarizes label counts and token-length distributions for quick dataset inspection.
 
 ## Notes
 
@@ -91,3 +105,7 @@ go build -o dist/datasetlint .
 
 [author-zhaoyang]: https://github.com/itamaker
 [avatar-zhaoyang]: https://images.weserv.nl/?url=https://github.com/itamaker.png&h=120&w=120&fit=cover&mask=circle&maxage=7d
+
+## License
+
+[MIT](LICENSE)
