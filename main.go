@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"github.com/jonny/current-projects/datasetlint/internal/app"
+	"github.com/itamaker/datasetlint/internal/app"
 )
 
 func main() {

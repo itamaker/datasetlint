@@ -1,4 +1,4 @@
-module github.com/jonny/current-projects/datasetlint
+module github.com/itamaker/datasetlint
 
 go 1.23.0
 
